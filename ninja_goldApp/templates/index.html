@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #wrapper{
+        width: 820px;
+        height: 200px;
+        display: flex;
+        justify-content: space-around;
+        background-color: rgb(153, 139, 59);
+        border: 5px solid gray;
+    
+    }
+    .box{
+        height: 150px;
+        width:150px;
+        border: 2px solid black;
+        text-align: center;
+        background-color: goldenrod;
+        margin: 23px 0px 0px 5px;
+        
+    }
+    .box2{
+        height: 150px;
+        width: 150px;
+        border: 2px solid black;
+        text-align: center;
+        background-color: goldenrod;
+        margin-top: 23px;
+    }
+    .box3{
+        height: 150px;
+        width: 150px;
+        border: 2px solid black;
+        text-align: center;
+        background-color: goldenrod;
+        margin-top: 23px;
+    }
+    .box4{
+        height: 150px;
+        width: 150px;
+        border: 2px solid black;
+        text-align: center;
+        background-color: goldenrod;
+        margin: 23px 15px 0px 0px;
+    }
+    .box5{
+        height: 150px;
+        width: 150px;
+        border: 2px solid black;
+        text-align: center;
+        background-color: goldenrod;
+        margin-top: 23px;
+    }
+</style>
+<body>
+    <h3>your gold:{{request.session.counter}} </h3>
+
+    <div id="wrapper">
+        <div class="box">
+            <h2>Farm</h2>
+            <p>(earn 10-20 golds)</p>
+            <form action="/process_gold" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="which_gold" value="farm">
+                <button type="submit">Find Gold</button>
+            </form>
+        </div>
+    
+        <div class="box2">
+            <h3>Cave</h3>
+            <p>(earn 5-10 golds)</p>
+            <form action="/process_gold" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="which_gold" value="cave">
+                <button type="submit">Find Gold</button>
+            </form>
+        </div>
+    
+        <div class="box4">
+            <h3>House</h3>
+            <p>(earn 2-5 golds)</p>
+            <form action="/process_gold" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="which_gold" value="house">
+                <button type="submit">Find Gold</button>
+            </form>
+        </div>
+    
+        <div class="box5">
+            <h3>Casino</h3>
+            <p>(earn 0-50 golds)</p>
+            <form action="/process_gold" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="which_gold" value="casino">
+                <button type="submit">Find Gold</button>
+            </form>
+        </div>
+    </div>
+    {{ request.session.activities }}
+
+    <a href="recet"><button>start over</button></a>
+
+</body>
+</html>
